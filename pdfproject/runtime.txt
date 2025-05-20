@@ -1,2 +1,2 @@
 python-3.10.13
-tensorflow==2.18.10
+tensorflow==2.18.0
