@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-(+)l(u-$k=im---go1pah40tigw=sup(7n)dw(rj%bghqo&s=f
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['pdf-library.onrender.com']
+ALLOWED_HOSTS = ['pdf-library-5.onrender.com']
 
 
 # Application definition
