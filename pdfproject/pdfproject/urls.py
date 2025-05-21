@@ -24,6 +24,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('pdfapp.urls')),
     path('',display_pdfs,name='display_pdfs')
-]
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
