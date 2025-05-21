@@ -116,10 +116,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 import os
-STATIC_URL = 'static/'
+import dj_database_url
+STATIC_URL = '/static/'
 
-STATICFILES_DIRS=[
-    os.path.join(BASE_DIR, 'static'),
+STATICFILES_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 MEDIA_URL = '/media/'
