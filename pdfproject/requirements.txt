@@ -124,3 +124,5 @@ whitenoise==6.9.0
 wikipedia==1.4.0
 wrapt==1.16.0
 yarl==1.17.1
+cloudinary
+django-cloudinary-storage
