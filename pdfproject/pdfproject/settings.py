@@ -1,16 +1,27 @@
 """
 Django settings for pdfproject project.
 """
-
+import os
 from pathlib import Path
 import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-(+)l(u-$k=im---go1pah40tigw=sup(7n)dw(rj%bghqo&s=f'
+<<<<<<< HEAD
 DEBUG = False
 ALLOWED_HOSTS = ['pdf-library-5.onrender.com']
 # ALLOWED_HOSTS = []
+=======
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
+
+ALLOWED_HOSTS = ['pdf-library-5.onrender.com']
+
+
+# Application definition
+>>>>>>> 3704a7dff2129b226f396a88a5c1cda532ec0a3b
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -26,6 +37,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -75,13 +87,24 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
+<<<<<<< HEAD
 # ✅ Static files
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
+=======
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/5.1/howto/static-files/
+
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS=[
+>>>>>>> 3704a7dff2129b226f396a88a5c1cda532ec0a3b
     os.path.join(BASE_DIR, 'static'),
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+<<<<<<< HEAD
 
 # ✅ Cloudinary config for all file types (PDFs included)
 CLOUDINARY_STORAGE = {
@@ -97,4 +120,12 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+=======
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Default primary key field type
+# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
+
+>>>>>>> 3704a7dff2129b226f396a88a5c1cda532ec0a3b
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
