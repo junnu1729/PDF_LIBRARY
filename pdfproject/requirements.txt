@@ -3,12 +3,9 @@ pdf2image==1.17.0
 pillow==11.0.0
 PyMuPDF==1.23.22
 whitenoise==6.9.0
-<<<<<<< HEAD
 wikipedia==1.4.0
 wrapt==1.16.0
 yarl==1.17.1
 cloudinary
 django-cloudinary-storage
-=======
 gunicorn==22.0.0
->>>>>>> 3704a7dff2129b226f396a88a5c1cda532ec0a3b

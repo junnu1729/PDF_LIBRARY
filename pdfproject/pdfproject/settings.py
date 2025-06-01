@@ -1,28 +1,20 @@
 """
 Django settings for pdfproject project.
 """
+
 import os
 from pathlib import Path
-import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-(+)l(u-$k=im---go1pah40tigw=sup(7n)dw(rj%bghqo&s=f'
-<<<<<<< HEAD
-DEBUG = False
-ALLOWED_HOSTS = ['pdf-library-5.onrender.com']
-# ALLOWED_HOSTS = []
-=======
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['pdf-library-5.onrender.com']
 
-
 # Application definition
->>>>>>> 3704a7dff2129b226f396a88a5c1cda532ec0a3b
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -44,8 +36,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
-
 ]
 
 ROOT_URLCONF = 'pdfproject.urls'
@@ -87,45 +77,25 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
-<<<<<<< HEAD
 # ✅ Static files
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-=======
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.1/howto/static-files/
-
-STATIC_URL = '/static/'
-
-STATICFILES_DIRS=[
->>>>>>> 3704a7dff2129b226f396a88a5c1cda532ec0a3b
     os.path.join(BASE_DIR, 'static'),
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-<<<<<<< HEAD
+# ✅ Media files
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# ✅ Cloudinary config for all file types (PDFs included)
+# ✅ Cloudinary storage
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': 'dx6uusym3',
     'API_KEY': '514699671827369',
     'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET'),
-    'RESOURCE_TYPE': 'auto',  # Automatically detect images, PDFs, videos, etc.
+    'RESOURCE_TYPE': 'auto',
 }
-
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
-# ✅ Media config (not used but safe to keep)
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-=======
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
-
->>>>>>> 3704a7dff2129b226f396a88a5c1cda532ec0a3b
+# ✅ Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
