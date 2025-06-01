@@ -6,23 +6,21 @@ from io import BytesIO
 import tempfile
 import os
 
-from cloudinary.models import CloudinaryField
-
 class PDFDocument(models.Model):
     title = models.CharField(max_length=100)
     category = models.CharField(max_length=50, blank=True, null=True)
-
-    pdf_file = CloudinaryField('pdf', resource_type='raw', folder='pdfs')
-    thumbnail = CloudinaryField('image', folder='pdf_thumbnails', blank=True, null=True)
-
+    
+    pdf_file = models.FileField(upload_to='pdfs/')
+    thumbnail = models.ImageField(upload_to='pdf_thumbnails/', blank=True, null=True)
+    
     uploaded_at = models.DateTimeField(default=timezone.now)
     file_size = models.PositiveIntegerField(blank=True, null=True)
 
     def save(self, *args, **kwargs):
-        # Save the model first (needed for CloudinaryField)
+        # Save first to ensure file exists (for use with self.pdf_file)
         super().save(*args, **kwargs)
 
-        # Set file size
+        # Set file size if not already set
         if self.pdf_file and not self.file_size:
             self.file_size = self.pdf_file.size
             super().save(update_fields=['file_size'])
@@ -31,10 +29,10 @@ class PDFDocument(models.Model):
         if self.pdf_file and not self.thumbnail:
             try:
                 with tempfile.NamedTemporaryFile(delete=False, suffix='.pdf') as tmp_pdf:
-                    tmp_pdf.write(self.pdf_file.file().read())
+                    tmp_pdf.write(self.pdf_file.read())
                     tmp_pdf.flush()
 
-                    # Optional: Windows only
+                    # Specify Poppler path if on Windows
                     poppler_path = r'C:\Users\USER\Downloads\Release-24.08.0-0 (1)\poppler-24.08.0\Library\bin'
 
                     pages = convert_from_path(
@@ -52,7 +50,7 @@ class PDFDocument(models.Model):
                         self.thumbnail.save(thumb_name, ContentFile(thumb_io.getvalue()), save=False)
                         super().save(update_fields=['thumbnail'])
 
-                    os.unlink(tmp_pdf.name)
+                os.unlink(tmp_pdf.name)
 
             except Exception as e:
                 print(f"Thumbnail generation error: {e}")
