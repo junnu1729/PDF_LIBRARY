@@ -13,7 +13,7 @@ SECRET_KEY = 'django-insecure-(+)l(u-$k=im---go1pah40tigw=sup(7n)dw(rj%bghqo&s=f
 DEBUG = True
 
 ALLOWED_HOSTS = ['pdf-library-5.onrender.com']
-# ALLOWED_HOSTS = ['127.0.0.1']
+#ALLOWED_HOSTS = ['127.0.0.1']
 
 # Application definition
 INSTALLED_APPS = [
