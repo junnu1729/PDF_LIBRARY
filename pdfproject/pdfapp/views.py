@@ -15,7 +15,7 @@ def display_pdfs(request):
     if category:
         pdfs = pdfs.filter(category__iexact=category)
 
-    paginator = Paginator(pdfs, 6)  # 6 PDFs per page
+    paginator = Paginator(pdfs, 6)  
     page_number = request.GET.get('page')
     page_pdfs = paginator.get_page(page_number)
 

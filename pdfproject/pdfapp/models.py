@@ -17,22 +17,22 @@ class PDFDocument(models.Model):
     file_size = models.PositiveIntegerField(blank=True, null=True)
 
     def save(self, *args, **kwargs):
-        # Save first to ensure file exists (for use with self.pdf_file)
+        
         super().save(*args, **kwargs)
 
-        # Set file size if not already set
+        
         if self.pdf_file and not self.file_size:
             self.file_size = self.pdf_file.size
             super().save(update_fields=['file_size'])
 
-        # Generate thumbnail if not present
+        
         if self.pdf_file and not self.thumbnail:
             try:
                 with tempfile.NamedTemporaryFile(delete=False, suffix='.pdf') as tmp_pdf:
                     tmp_pdf.write(self.pdf_file.read())
                     tmp_pdf.flush()
 
-                    # Specify Poppler path if on Windows
+                    
                     poppler_path = r'C:\Users\USER\Downloads\Release-24.08.0-0 (1)\poppler-24.08.0\Library\bin'
 
                     pages = convert_from_path(
